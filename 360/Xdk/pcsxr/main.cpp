@@ -6,6 +6,7 @@
 #include "cdriso.h"
 #include "r3000a.h"
 #include "gui.h"
+#include "aurora.h"
 
 
 //extern "C" void gpuDmaThreadInit();
@@ -113,8 +114,25 @@ int main() {
 int __main() {
 #endif
 	InitD3D();
-	
-	RunPcsx("game:\\Tenchu 2.bin");
-
+	DWORD dwLaunchDataSize;
+	if (XGetLaunchDataSize(&dwLaunchDataSize) == ERROR_SUCCESS) {
+		BYTE* pLaunchData = new BYTE[dwLaunchDataSize];
+		XGetLaunchData(pLaunchData, dwLaunchDataSize);
+		AURORA_LAUNCHDATA_ROM_V2* aurora = (AURORA_LAUNCHDATA_ROM_V2*)pLaunchData;
+		char* extracted_path = new char[dwLaunchDataSize];
+		memset(extracted_path, 0, dwLaunchDataSize);
+		if (aurora->ApplicationId == AURORA_LAUNCHDATA_APPID && aurora->FunctionId == AURORA_LAUNCHDATA_ROM_FUNCID && (aurora->FunctionVersion == 1 || aurora->FunctionVersion == 2)) {
+			if (xbox_io_mount("aurora:", aurora->SystemPath) >= 0)
+				sprintf_s(extracted_path, dwLaunchDataSize, "aurora:%s%s", aurora->RelativePath, aurora->Exectutable);
+			//TODO: mention error
+		}
+		if (pLaunchData)
+			delete []pLaunchData; // Cleanup memory
+		if (extracted_path && extracted_path[0] != 0) {
+			RunPcsx(extracted_path);
+			return 0;
+		}
+	}
+	RunPcsx("game:\\autoboot.iso");
 	return 0;
 }

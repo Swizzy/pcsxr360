@@ -622,6 +622,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aurora.h" />
     <ClInclude Include="gui.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug_cc|Xbox 360'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug_cc_optimised|Xbox 360'">true</ExcludedFromBuild>
