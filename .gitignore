@@ -250,3 +250,11 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/360/Xdk/audio/Release_LTCG
+/360/Xdk/cdrom/Release_LTCG
+/360/Xdk/core/Release_LTCG
+/360/Xdk/input/Release_LTCG
+/360/Xdk/pcsxr/Release_LTCG
+/360/Xdk/pokopom_input/Release_LTCG
+/360/Xdk/video/Release_LTCG
+/360/Xdk/zlib/Release_LTCG
