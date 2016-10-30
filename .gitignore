@@ -258,3 +258,12 @@ paket-files/
 /360/Xdk/pokopom_input/Release_LTCG
 /360/Xdk/video/Release_LTCG
 /360/Xdk/zlib/Release_LTCG
+
+/360/Xdk/audio/debug_cc_optimised
+/360/Xdk/cdrom/debug_cc_optimised
+/360/Xdk/core/debug_cc_optimised
+/360/Xdk/input/debug_cc_optimised
+/360/Xdk/pcsxr/debug_cc_optimised
+/360/Xdk/pokopom_input/debug_cc_optimised
+/360/Xdk/video/debug_cc_optimised
+/360/Xdk/zlib/debug_cc_optimised
